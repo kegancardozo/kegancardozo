@@ -1,0 +1,19 @@
+
+
+
+
+<script>
+    var currentScrollPos = window.pageYOffset;
+    window.onscroll = function() {scrollFunction()};
+
+function scrollFunction() {
+  if (document.body.scrollTop > 75 || document.documentElement.scrollTop > 75) {
+    document.getElementById("nav").classList.add("scroll");
+
+  } else {
+    document.getElementById("nav").classList.remove("scroll");
+  }
+  prevScrollpos = currentScrollPos;
+}
+</script>
+

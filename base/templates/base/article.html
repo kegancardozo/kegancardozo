@@ -1,0 +1,134 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %} {{article.title_tag}} {% endblock %}
+{% block content %}
+<style>
+
+.article a {
+ color:#898989;
+ text-decoration:underline;
+}
+
+.article a:hover {
+    opacity:0.8;
+}
+
+.article em {
+    font-size: calc(28px*var(--font-scale));
+    font-weight: 800;
+}
+
+.article li{
+  list-style-type:none;
+  position:relative;
+  font-size:calc(24px*var(--font-scale));
+  padding-bottom:10px;
+  }
+
+  .article li:before{
+    top:0.37em;
+    content:' ';
+    background:var(--dark-blue-color);
+    width:0.5em;
+    height:0.5em;
+    position:absolute;
+    left:-0.8em;
+}
+table {
+    margin-top:25px;
+    margin-bottom:25px;
+    width:100%;
+    border-spacing:0;
+    text-align: left;
+    color: black;
+}
+th {
+  background-color: var(--dark-purple-color);
+  padding:10px;
+  font-weight:800;
+}
+
+td {
+    padding:10px;
+}
+
+tr:nth-child(odd) {
+    background-color: var(--light-purple-color);
+}
+
+.article li:nth-child(3n+2):before{
+    background:var(--dark-green-color);
+}
+
+.article li:nth-child(3n+3):before{
+  background:var(--dark-purple-color);
+}
+
+hr {
+    background-color:black;
+    height:5px;
+}
+
+mark {
+    background-color:#E5E5E5 ;
+}
+
+blockquote {
+    border-left:10px solid;
+    border-color:var(--dark-green-color);
+    position:relative;
+    font-size: calc(24px*var(--font-scale));
+    color:black;
+    padding-top:100px;
+    margin-top:25px;
+    margin-left:0;
+    padding-left:50px;
+    padding-bottom:50px;
+    margin-right:0px;
+    background-color:var(--light-green-color);
+    padding-right:50px;
+}
+
+blockquote:before {
+    content:'“';
+    display:block;
+    color:var(--dark-green-color);
+    font-size:calc(150px*var(--font-scale));
+    font-family:emoji;
+    position:absolute;
+    top:0;
+
+}
+
+blockquote cite {
+    display:block;
+    font-weight:800;
+    calc(20px*var(--font-scale));
+    padding-top:25px;
+
+}
+</style>
+
+
+<main> 
+    <div class="circle-blue twinkle"></div>     
+    <div class="circle-purple twinkle"></div>  
+    <div class="circle-green twinkle"></div> 
+    <article class="article">
+     <div style="position:relative">
+
+     <div class="fadein">
+            
+            <span style="font-size:20px;font-weight:800;">{{article.created|date:"F j, Y"}}</span>
+            
+     <h1>{{article.title}}</h1>
+            
+            <img width="100%" src="{% static 'images/article-image.png' %}">
+            </div></div>
+
+            {{article.body|safe}}
+</article>
+</main>
+
+
+{% endblock content %}

@@ -1,0 +1,107 @@
+{% extends 'main.html' %}
+{% load static %}
+{% block title %} Kegan Cardozo: Digital Marketer {% endblock %}
+{% block content %}
+<!-- <div style="overflow:hidden">
+    <div class="circle-blue twinkle"></div>     
+    <div class="circle-purple twinkle"></div>  
+    <div class="circle-green twinkle"></div> </div> -->
+
+<main> 
+    <div class="circle-blue twinkle"></div>     
+    <div class="circle-purple twinkle"></div>  
+    <div class="circle-green twinkle"></div> 
+    <div class="hero">
+        <div style="position:relative">   
+            <div class="fadein">
+    <span class="heading-detail">Kegan Cardozo</span>
+    <h1 style="font-weight:800;margin-top:15px;margin-bottom:10px;">Digital Marketer</h1>
+    <p class="standout-paragraph" style="margin-bottom:30px">5+ years industry experience<br>specalising in SEO.</p>
+    <a class="call-to-action" href="">Get in Touch</a>
+</div></div>
+</div>
+<div style="background-color:black" id="about">
+    <div class="container">
+    <div>
+
+    <h2 style="color:white;padding-top:25px;margin-top:0px;">A little bit about me...</h2>
+
+    <div class="two-column" style="color:white">
+        <div><p>After completing my bachelors in Psychology, I pursued a career in digital marketing and landed a job in an award-winning full service digital marketing agency.</p>
+            <p>To aid my work as an SEO, I’ve learned how to code using HTML, CSS, JS, PHP, SQL and Python. </p></div>
+            <div>
+                <p>  I am currently looking to learn more about graphic design, creating video content, paid advertising and social media. </p>
+             <p>I have a keen interest in philosophy, game theory, politics and health. I also like a good debate, play guitar, poker, the occasional video game and  watch a fair few films each year. </p>
+            </div>
+            
+            
+    </div>
+</div></div></div>
+<div>
+        <div class="container">
+        <h2 style="font-weight:bold;color:black;padding-top:100px;">Blog</h2></div>
+    <div style="padding-bottom:40px;left:-3%" class="glider-contain multiple">
+        <div class="slider-fade"></div>
+    <div class="glider">
+
+        {% for post in posts %}
+        <div class="post-card"> 
+            {% if post.post_type == 'Text' %}
+            <div class="post">
+                <div class="circle-tiny" style="background-color:#FBF0FF;top:0;left:-50px"></div>  
+                <p>{{post.post_body}}</p>
+                <span class="post-date">{{post.created|date:"F j, Y | g:i a"}}</span>
+            </div>
+            {% elif post.post_type == 'Image' %}
+            <div class="post">
+                <div class="circle-medium" style="background-color:#F2FFF6;top:0;left:-50px"></div> 
+                <p>{{post.post_caption}}</p>
+                <img src="{{post.post_body}}" width="100%">
+                <span class="post-date">{{post.created|date:"F j, Y | g:i a"}}</span>
+            </div>
+            {% elif post.post_type == 'Quote' %}
+            <div class="post">
+                <div class="circle-tiny" style="background-color:#F2FDFF;top:0;left:-50px"></div>  
+                <p>“{{post.post_body}}”</p>
+                <small>{{post.post_caption}}</small>
+            </div>
+            {% endif %}
+    </div>
+    {% endfor %}
+</div>   </div></div>  <div class="container">
+<div class="featured-article-pod" style="position:relative">
+    <div class="circle-featured-article" style="background-color: #F2FFF6"></div>
+    <div class="article-pod-card">
+        <span style="font-weight:800;" class="post-date">{{featured_article.created|date:"F j, Y"}}</span>
+        <a href="{% url 'article' featured_article.id %}">
+
+        <h3 class="article-pod-title">{{featured_article.title}}</h3>
+            <div class="article-pod-container">
+                
+        <img src="{{featured_article.featured_image}}" width="100%">
+        <div class="article-pod-overlay"><span>Read</span></div></div>
+            </a>  
+    </div>
+</div>
+</div>
+    <div style="background-color:black">
+        <div class="container">
+            <div style="padding-bottom:100px;padding-left:5%;padding-right:5%">
+    <div style="margin-left:10%;margin-right:10%;padding-bottom:100px;display: flex;flex-direction: column;justify-content: center;align-items: center;">
+        <h2 style="font-weight:bold;color:white;padding-top:100px;">Ask me something</h2>
+        <style>
+            label {
+            color:white;
+            font-Family:'Inter';
+            font-size:30px;    
+            }
+        </style>
+        <form width="500px;">
+            <textarea type="message" style="width:400px; height:200px;"></textarea><br>
+            <input style="padding: 0px 40px;background-color: white;color: black;font-size:30px;text-decoration:none;font-weight:800;margin: 20px;" type="submit" value="Send">
+
+        </form>
+    </div></div></div>
+</div>
+</main>
+{% endblock content %}
